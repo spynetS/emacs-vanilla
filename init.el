@@ -58,6 +58,17 @@
   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
   (global-set-key (kbd "C-c C-x M-x") 'execute-extended-command))
 
+
+;; treemacs
+(use-package treemacs
+  :ensure t
+  :defer t
+  )
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
 ;; IDO Mode
 (use-package ido-completing-read+
   :ensure t
@@ -118,7 +129,7 @@
 (use-package magit
   :ensure t
   :config
-  (global-set-key (kbd "M-g c") 'magit-clone)g
+  (global-set-key (kbd "M-g c") 'magit-clone)
   (global-set-key (kbd "M-g g") 'magit))
 
 ;; Dired
