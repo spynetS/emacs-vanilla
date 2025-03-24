@@ -10,6 +10,17 @@
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 (package-initialize)
 
+;; use-package with package.el:
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+;; Set the title
+(setq dashboard-banner-logo-title "Hello there")
+;; Content is not centered by default. To center, set
+(setq dashboard-center-content t)
+;; vertically center content
+(setq dashboard-vertically-center-content t)
 
 ;; projectile
 (use-package projectile
@@ -127,6 +138,11 @@
 (global-set-key (kbd "C-&") 'previous-buffer)
 (global-set-key (kbd "C-c C-d d") 'duplicate-line)
 (global-set-key (kbd "C-c C-d c") 'copy-line)
+
+;; to enter directory or file with enter
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "RET") 'dired-find-file))
+
 
 ;; window movement
 (windmove-default-keybindings)
