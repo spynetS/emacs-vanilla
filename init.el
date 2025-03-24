@@ -1,9 +1,15 @@
 (setq custom-file "~/.config/emacs/custom.el")
 
 ;; c3-
-(load "~/.config/emacs/custom-packages/c3-ts-mode.el")
-(add-to-list 'treesit-language-source-alist
-	     '(c3 "https://github.com/c3lang/tree-sitter-c3"))
+;;(load "~/.config/emacs/custom-packages/c3-ts-mode.el")
+
+;;(add-to-list 'treesit-language-source-alist
+;;	     '(c3 "https://github.com/c3lang/tree-sitter-c3"))
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(package-initialize)
+
 
 ;; projectile
 (use-package projectile
@@ -14,10 +20,10 @@
               ("s-p" . projectile-command-map)
               ("C-c p" . projectile-command-map)))
 ;; Nyan mode
-(use-package nyan-mode
-  :ensure t
-  :config
-  (nyan-mode 1))
+;; (use-package nyan-mode
+;;   :ensure t
+;;   :config
+;;   (nyan-mode 1))
 
 ;; Theme
 (use-package gruber-darker-theme
@@ -172,7 +178,7 @@
   (define-key dired-mode-map (kbd "C-?") 'dired-do-compress)      ;; Compress files
 )
 
-(add-hook 'dired-mode-hook 'my-dired-keys)
+;;(add-hook 'dired-mode-hook 'my-dired-keys)
 
 ;; Custom key to open init.el
 (global-set-key (kbd "C-c C-x C-f")
@@ -190,6 +196,7 @@
   :ensure t)
 
 ;; Copy line function
+
 (defun copy-line (arg)
   "Copy lines (as many as prefix argument) in the kill ring.
 Ease of use features:
